@@ -1,0 +1,66 @@
+
+                    @Query("SELECT * FROM universal WHERE id == :Id")
+                    fun getUniversal(Id: Int): ServicesModel
+/
+                    @Query("SELECT * FROM resource WHERE id == :Id")
+                    fun getResources(Id: Int): Resources
+
+                    @Query("SELECT * FROM getdata WHERE id == :it")
+                    fun getData(it: Int): GetData
+
+                    @Update
+                    fun updateGetData(u: GetData)
+
+                    @Insert(onConflict = REPLACE)
+                    fun insertGetData(u: GetData)
+
+                    @Insert(onConflict = REPLACE)
+                    fun insertResources(doc: Resources)
+
+                    @Insert(onConflict = REPLACE)
+                    fun insertUseful(doc: Useful)
+
+                    @Update
+                    fun updateUseful(doc: Useful)
+
+                    @Delete
+                    fun deleteUseful(doc: Useful)
+
+                    @Query("SELECT * FROM foydali WHERE id == :Id")
+                    fun getUSeful(Id: Int): Useful
+
+                    @Insert(onConflict = REPLACE)
+                    fun insertMalumot(doc: Malumot)
+
+                    @Update
+                    fun updateMalumot(doc: Malumot)
+
+                    @Delete
+                    fun deleteMalumot(doc: Malumot)
+
+                    @Query("SELECT * FROM malumotlar WHERE id ==:Id")
+                    fun getMalumot(Id: Int): Malumot
+
+                    @Query("SELECT * FROM admin")
+                    fun getAdmin(): Admin
+
+                    @Update
+                    fun updateAdmin(doc: Admin)
+
+                    @Query("SELECT * FROM version")
+                    fun getVersion(): Version
+
+                    @Query("SELECT * FROM version")
+                    fun getAllVersion(): MutableList<Version>
+
+                      @Insert(onConflict = REPLACE)
+                      fun insertVersion(doc: Version)
+
+                      @Update
+                      fun updateVersion(doc: Version)
+
+                      @Update
+                      fun updateDownload(doc: DownloadModel)
+
+                      @Query("SELECT * FROM download")
+                      fun getDownload(): DownloadModel
