@@ -50,9 +50,14 @@
 /
                     @Query("SELECT * FROM version")
                     fun getVersion(): Version
-
+/
                     @Query("SELECT * FROM version")
                     fun getAllVersion(): MutableList<Version>
+/
+
+                      @Query("SELECT * FROM download")
+                      fun getDownload(): DownloadModel
+/
 
                       @Insert(onConflict = REPLACE)
                       fun insertVersion(doc: Version)
@@ -62,6 +67,3 @@
 
                       @Update
                       fun updateDownload(doc: DownloadModel)
-
-                      @Query("SELECT * FROM download")
-                      fun getDownload(): DownloadModel

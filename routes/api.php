@@ -46,11 +46,7 @@ Route::get('/getdata/all', [GetDataController::class, 'index']);
 
 Route::get('/malumotlar/all', [MalumotlarController::class, 'index']);
 
-
-
-
-
-
+  
 Route::get('/universal/{id}', [UniversalController::class, 'showuniversal']);
 Route::get('/getdata/{id}', [GetDataController::class, 'show']);
 Route::get('/resource/{id}', [ResourceController::class, 'showresource']);
@@ -68,3 +64,4 @@ Route::post('admin/update', [AdminController::class, 'update']);
 
 Route::get('version/all', [AdminController::class, 'all']);
 Route::get('version/{id}', [AdminController::class, 'show']);
+Route::get('download/all', [AdminController::class, 'downloads']);
