@@ -10,4 +10,6 @@ class Foydali extends Model
     use HasFactory;
 
     protected $table = "foydali";
+    protected $guarded = [];
+    
 }

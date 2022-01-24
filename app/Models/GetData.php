@@ -10,4 +10,7 @@ class GetData extends Model
     use HasFactory;
 
     protected $table = "getdata";
+    protected $fillable = ['positsion'];
+    public $timestamps = false;
+    
 }

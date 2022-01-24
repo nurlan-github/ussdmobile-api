@@ -36,7 +36,22 @@ class MalumotlarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $updated = Malumotlar::create(
+          [
+            'info' => $request->info,
+            'calling' => $request->calling,
+            'companyId' => $request->companyId,
+          ]
+        );
+        if ($updated) {
+          $this->response['success'] = true;
+          $this->response['message'] = "created malumat";
+          return response($this->response, 200);
+        } else {
+          $this->response['success'] = true;
+          $this->response['message'] = "no created";
+          return response($this->response, 200);
+        }
     }
 
     /**
@@ -69,9 +84,24 @@ class MalumotlarController extends Controller
      * @param  \App\Models\Malumotlar  $malumotlar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Malumotlar $malumotlar)
+    public function update(Request $request)
     {
-        //
+      $updated = Malumotlar::where('id', $request->id)->update(
+        [
+          'info' => $request->info,
+          'calling' => $request->calling,
+          'companyId' => $request->companyId,
+        ]
+      );
+      if ($updated) {
+        $this->response['success'] = true;
+        $this->response['message'] = "updated malumat";
+        return response($this->response, 200);
+      } else {
+        $this->response['success'] = true;
+        $this->response['message'] = "no updated";
+        return response($this->response, 200);
+      }
     }
 
     /**
@@ -80,8 +110,31 @@ class MalumotlarController extends Controller
      * @param  \App\Models\Malumotlar  $malumotlar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Malumotlar $malumotlar)
+    public function destroy($id)
     {
-        //
+    $updated = Malumotlar::find($id)->delete();
+    if ($updated) {
+      $this->response['success'] = true;
+      $this->response['message'] = "deleted malumat";
+      return response($this->response, 200);
+    } else {
+      $this->response['success'] = true;
+      $this->response['message'] = "no deleted";
+      return response($this->response, 200);
+    }
+    }
+
+    public function showmalumot($id){
+      $resource = Malumotlar::find($id);
+      if (empty($resource)) {
+        $this->response['success'] = true;
+        $this->response['message'] = "malumot not found";
+        return response($this->response, 200);
+      } else {
+        $this->response['success'] = true;
+        $this->response['message'] = "malumotlar";
+        $this->response['data'] = $resource;
+        return response($this->response, 200);
+      }
     }
 }

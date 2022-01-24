@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Malumotlar extends Model
+class Admin extends Model
 {
     use HasFactory;
-
-    protected $table = "malumotlar";
+    protected $table = 'admin';
     public $timestamps = false;
     protected $guarded = [];
 }

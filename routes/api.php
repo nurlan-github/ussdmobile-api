@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\MalumotlarController;
 use App\Http\Controllers\FoydaliController;
 use App\Http\Controllers\GetDataController;
+use App\Models\GetData;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +39,32 @@ Route::get('/malumotlar/companyId/{companyId}', [MalumotlarController::class,'sh
 Route::get('/foydali/all', [FoydaliController::class, 'index']);
 
 Route::get('/universal/all', [UniversalController::class, 'index']);
-Route::get('/universal/{id}', [UniversalController::class, 'showuniversal']);
 
 Route::get('/resource/all', [ResourceController::class, 'index']);
-Route::get('/resource/{id}', [ResourceController::class, 'showresource']);
 
+Route::get('/getdata/all', [GetDataController::class, 'index']);
 
 Route::get('/malumotlar/all', [MalumotlarController::class, 'index']);
-Route::get('/getdata/all', [GetDataController::class, 'index']);
+
+
+
+
+
+
+Route::get('/universal/{id}', [UniversalController::class, 'showuniversal']);
+Route::get('/getdata/{id}', [GetDataController::class, 'show']);
+Route::get('/resource/{id}', [ResourceController::class, 'showresource']);
+Route::post('/getdata/update', [GetDataController::class, 'update']);
+Route::post('/getdate/store', [GetDataController::class, 'store']);
+Route::post('/resource/store', [ResourceController::class, 'store']);
+Route::get('/foydali/{id}', [FoydaliController::class, 'show']);
+Route::post('/malumotlar/store', [MalumotlarController::class, 'store']);
+Route::post('/malumotlar/update', [MalumotlarController::class, 'update']);
+Route::get('/malumotlar/{id}', [MalumotlarController::class, 'showmalumot']);
+Route::delete('/malumotlar/delete/{id}', [MalumotlarController::class, 'destroy']);
+
+Route::get('admin', [AdminController::class, 'index']);
+Route::post('admin/update', [AdminController::class, 'update']);
+
+Route::get('version/all', [AdminController::class, 'all']);
+Route::get('version/{id}', [AdminController::class, 'show']);

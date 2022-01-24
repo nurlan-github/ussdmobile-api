@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class UniversalController extends Controller
 {
+    protected $response = [
+      'success' => false,
+      'message' => 'message',
+      'data'    => [],
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -80,6 +85,17 @@ class UniversalController extends Controller
     }
 
     public function showuniversal($id){
-      return Universal::where('id', $id)->get();
+
+      $universal = Universal::find($id);
+      if(!empty($universal)){
+        $this->response['success'] = true;
+        $this->response['message'] = "universal";
+        $this->response['data'] = $universal;
+        return response($this->response, 200);
+      }else{
+        $this->response['success'] = true;
+        $this->response['message'] = "not found universal";
+        return response($this->response, 200);
+      }
     }
 }

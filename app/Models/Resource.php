@@ -10,5 +10,7 @@ class Resource extends Model
     use HasFactory;
 
     protected $table = 'resource';
+    public $timestamps = false;
+    protected $guarded = [];
 
 }

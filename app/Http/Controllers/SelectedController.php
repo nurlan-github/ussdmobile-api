@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class SelectedController extends Controller
 {
+  protected $response = [
+    'success' => false,
+    'message' => 'product no created',
+    'data'    => [],
+  ];
     /**
      * Display a listing of the resource.
      *

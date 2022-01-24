@@ -45,9 +45,19 @@ class FoydaliController extends Controller
      * @param  \App\Models\Foydali  $foydali
      * @return \Illuminate\Http\Response
      */
-    public function show(Foydali $foydali)
+    public function show($id)
     {
-        //
+      $resource = Foydali::find($id);
+      if (empty($resource)) {
+        $this->response['success'] = true;
+        $this->response['message'] = "foydali not found";
+        return response($this->response, 200);
+      }else{
+        $this->response['success'] = true;
+        $this->response['message'] = "foydali";
+        $this->response['data'] = $resource;
+        return response($this->response, 200);
+      }
     }
 
     /**

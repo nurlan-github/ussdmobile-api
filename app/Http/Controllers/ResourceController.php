@@ -41,7 +41,23 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $updated = Resource::create(
+        [
+          'title' => $request->title,
+          'companyId' => $request->companyId,
+          'type' => $request->type,
+          'dataType' => $request->dataType,
+        ]
+      );
+      if ($updated) {
+        $this->response['success'] = true;
+        $this->response['message'] = "created resource";
+        return response($this->response, 200);
+      } else {
+        $this->response['success'] = true;
+        $this->response['message'] = "no created";
+        return response($this->response, 200);
+      }
     }
 
     /**
