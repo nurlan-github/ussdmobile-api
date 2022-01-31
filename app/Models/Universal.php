@@ -10,7 +10,8 @@ class Universal extends Model
     use HasFactory;
 
     protected $table = 'universal';
-    
+      protected $guarded = [];
+      public $timestamps = false;
     // protected $fillable = [
 
     // ];

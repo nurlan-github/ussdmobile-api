@@ -65,3 +65,6 @@ Route::post('admin/update', [AdminController::class, 'update']);
 Route::get('version/all', [AdminController::class, 'all']);
 Route::get('version/{id}', [AdminController::class, 'show']);
 Route::get('download/all', [AdminController::class, 'downloads']);
+
+
+Route::post('/universal/store', [UniversalController::class, 'store']);

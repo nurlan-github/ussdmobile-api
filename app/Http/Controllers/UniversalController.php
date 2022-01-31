@@ -41,7 +41,26 @@ class UniversalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $universal = Universal::create([
+          'title' => $request->title,
+          'amount' => $request->amount,
+          'type' => $request->type,
+          'companyId' => $request->companyId,
+          'dataTypeId' => $request->dataTypeId,
+          'connect' => $request->connect,
+          'allocation' => $request->allocation,
+          'bookMarks' => $request->bookMarks,
+        ]);
+        if ($universal) {
+          $this->response['success'] = true;
+          $this->response['message'] = "created universal";
+          return response($this->response, 200);
+        } else {
+          $this->response['success'] = true;
+          $this->response['message'] = "no created";
+          return response($this->response, 200);
+        }
+
     }
 
     /**
